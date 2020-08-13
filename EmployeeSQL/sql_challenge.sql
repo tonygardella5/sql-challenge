@@ -61,11 +61,15 @@ inner join employees
 	on (dept_manager.emp_no = employees.emp_no);
 	
 	
-select last_name, first_name
+select employees.last_name, employees.first_name, employees.emp_no, departments.dept_name
 from employees
-where emp_no in
-	(select emp_no
-	from dept_emp
-	where dept_name in (
-		select dept_name
-		from departments));
+inner join dept_emp
+	on (employees.emp_no = dept_emp.emp_no)
+inner join departments 
+	on (dept_emp.dept_no = departments.dept_no);
+
+
+select first_name, last_name, sex
+from employees
+where first_name = 'Hercules' and last_name like 'B%';
+
