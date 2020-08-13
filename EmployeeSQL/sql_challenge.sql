@@ -85,3 +85,7 @@ inner join departments
 	on (dept_emp.dept_no = departments.dept_no)
 where departments.dept_name = 'Sales' or departments.dept_name = 'Development';
 
+select count(last_name), last_name
+from employees
+group by last_name
+order by count(last_name) desc;
